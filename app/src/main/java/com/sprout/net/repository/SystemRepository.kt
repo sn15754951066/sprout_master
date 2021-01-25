@@ -35,6 +35,13 @@ class SystemRepository {
         serviceApi.login(map)
     }
 
+    /**
+     * 频道分类
+     */
+    suspend fun recommend()= withContext(Dispatchers.IO){
+        serviceApi.recommend()
+    }
+
 
 
 }

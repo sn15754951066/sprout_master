@@ -84,35 +84,32 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         //登录成功
         login()
 
-        //获取验证码
-        btn_verify
+        //点击 获取验证码
+        getVerify()
 
 
 
 
-        iv_wb.setOnClickListener(object : View.OnClickListener{
+        iv_wb.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
-                startActivity(Intent(this@LoginActivity,LoginOkActivity::class.java))
+                startActivity(Intent(this@LoginActivity, LoginOkActivity::class.java))
             }
         })
     }
 
     private fun login() {
 
-        btn_login.setOnClickListener(object: View.OnClickListener {
+        btn_login.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
-                    val string1 = SpUtils.instance!!.getString(Constants.token)
-                    if (string1 != "") {
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                    } else {
-                        startActivity(Intent(this@LoginActivity, LoginOkActivity::class.java))
-                    }
+                val string1 = SpUtils.instance!!.getString(Constants.token)
+                if (string1 != "") {
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                } else {
+                    startActivity(Intent(this@LoginActivity, LoginOkActivity::class.java))
+                }
 
-                //点击 获取验证码
-                getVerify()
 
             }
-
 
 
         })
@@ -128,15 +125,27 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             cl_loginverify.visibility = View.VISIBLE
 
         })
+
     }
 
+    //点击获取验证码
     private fun getVerify() {
 
         btn_verify.setOnClickListener(View.OnClickListener {
-            cl_loginverify.visibility = View.VISIBLE
-            cl_loginsend.visibility = View.GONE
-            //倒计时
-            initTime()
+            //判断手机号
+            val loginPhone = et_login_phone.text.toString()
+
+
+            if(loginPhone!=null){
+                cl_loginverify.visibility = View.GONE
+                cl_loginsend.visibility = View.VISIBLE
+                //倒计时
+                initTime()
+                Toast.makeText(this, loginPhone, Toast.LENGTH_SHORT).show()
+
+            }else {
+                Toast.makeText(this, "您输入的手机号不能为空！", Toast.LENGTH_SHORT).show()
+            }
         })
 
     }
@@ -173,6 +182,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onTextInputCompleted(text: String) {
                 //TODO 文本输入完成
+                //跳转到主页
+                if(text!=null){
+                    startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+                }else{
+                    Toast.makeText(this@LoginActivity, "验证码输入错误 请重新输入！", Toast.LENGTH_SHORT).show()
+                }
             }
 
         })
