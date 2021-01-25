@@ -16,6 +16,11 @@ class HomeFragment : BaseFragment<BindHomeFragmentViewModel, FragmentHomeBinding
     BindHomeFragmentViewModel::class.java
 ) {
 
+    companion object{
+        val instance:HomeFragment by lazy { HomeFragment() }
+    }
+
+
     override fun initView() {
 
 

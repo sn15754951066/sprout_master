@@ -42,6 +42,20 @@ class SystemRepository {
         serviceApi.recommend()
     }
 
+    /**
+     * 获取数据
+     */
+    suspend fun getBrand(page:Int,size:Int)= withContext(Dispatchers.IO){
+        serviceApi.getBrand(page,size)
+    }
+
+    /**
+     *
+     */
+    suspend fun getGoods(page: Int,size: Int)= withContext(Dispatchers.IO){
+        serviceApi.getGoods(page,size)
+    }
+
 
 
 }

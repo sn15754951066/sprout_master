@@ -10,22 +10,113 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vp_main"
+        <FrameLayout
+            android:id="@+id/fragments"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/tab_main"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layout_nav"/>
 
-        <com.google.android.material.tabs.TabLayout
-            app:tabIndicatorHeight="@dimen/dp_0"
-            android:id="@+id/tab_main"
+        <!--底部导航-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_nav"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_height="@dimen/dp_60"
+            app:layout_constraintBottom_toBottomOf="parent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_home"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/layout_discover">
+
+                <ImageView
+                    android:id="@+id/img_home"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/main_nav_home_hl" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_discover"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toRightOf="@id/layout_home"
+                app:layout_constraintRight_toLeftOf="@id/layout_more">
+
+                <ImageView
+                    android:id="@+id/img_discover"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/main_nav_discover_normal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_more"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toRightOf="@id/layout_discover"
+                app:layout_constraintRight_toLeftOf="@id/layout_message">
+
+                <ImageView
+                    android:id="@+id/img_more"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/main_nav_more_normal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_message"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toRightOf="@id/layout_more"
+                app:layout_constraintRight_toLeftOf="@id/layout_mine">
+
+                <ImageView
+                    android:id="@+id/img_message"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/main_nav_message_normal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_mine"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toRightOf="@id/layout_message"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <ImageView
+                    android:id="@+id/img_mine"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:src="@mipmap/main_nav_mine_normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

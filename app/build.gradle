@@ -52,6 +52,17 @@ android {
         }
     }
 
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
 }
 
 dependencies {
@@ -97,7 +108,14 @@ dependencies {
     //跑马灯
     implementation 'com.xj.marqueeView:marqueeView:0.1.20'
 
+
     //SplitEditText 一个灵活的分割编辑框
     implementation 'com.king.view:splitedittext:1.0.0'
+
+    //本地相机相册选择图片
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.3'
+
+    //图片的放大缩小
+    implementation 'com.bm.photoview:library:1.4.1'
 
 }

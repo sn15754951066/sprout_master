@@ -52,6 +52,7 @@
     <color name="f7">#F7F7F7</color>
     <color name="f8">#F8F8F8</color>
     <color name="f9">#F9F9F9</color>
+    <color name="gray_tag">#E3E3E3</color>
 
     <color name="activity_bg_color">#fff5f5f5</color>
     <color name="orange">#FFE4CA</color>
