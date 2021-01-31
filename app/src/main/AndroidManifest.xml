@@ -18,8 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".ui.more.SubmitMoreActivity"></activity>
-        <activity android:name=".ui.more.TagsActivity"></activity>
+       <activity android:name=".ui.more.ThemeActivity"/>
+        <activity android:name=".ui.more.SubmitMoreActivity" />
+        <activity android:name=".ui.more.TagsActivity" />
         <activity android:name=".login.LoginOkActivity" />
         <activity android:name=".login.EnterPageActivity" />
         <activity android:name=".MainActivity" />

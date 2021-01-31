@@ -43,17 +43,25 @@ class SystemRepository {
     }
 
     /**
-     * 获取数据
+     * 获取品牌数据
      */
     suspend fun getBrand(page:Int,size:Int)= withContext(Dispatchers.IO){
         serviceApi.getBrand(page,size)
     }
 
     /**
-     *
+     *获取商品数据
      */
     suspend fun getGoods(page: Int,size: Int)= withContext(Dispatchers.IO){
         serviceApi.getGoods(page,size)
+    }
+
+    /**
+     * 获取主题数据
+     */
+
+    suspend fun getTheme()= withContext(Dispatchers.IO){
+        serviceApi.getTheme()
     }
 
 

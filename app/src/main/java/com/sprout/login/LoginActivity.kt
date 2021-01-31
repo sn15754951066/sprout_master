@@ -95,19 +95,22 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this@LoginActivity, LoginOkActivity::class.java))
             }
         })
+
+        val string1 = SpUtils.instance!!.getString(Constants.token)
+        if (string1 != "") {
+            startActivity(Intent(this@LoginActivity, EnterPageActivity::class.java))
+        } else {
+            startActivity(Intent(this@LoginActivity, LoginOkActivity::class.java))
+        }
+
     }
 
     private fun login() {
 
         btn_login.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
-                val string1 = SpUtils.instance!!.getString(Constants.token)
-                if (string1 != "") {
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                } else {
-                    startActivity(Intent(this@LoginActivity, LoginOkActivity::class.java))
-                }
 
+                startActivity(Intent(this@LoginActivity, EnterPageActivity::class.java))
 
             }
 
