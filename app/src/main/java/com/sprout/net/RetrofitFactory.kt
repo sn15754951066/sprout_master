@@ -19,8 +19,8 @@ class RetrofitFactory {
     /**
      * 伴生对象 单例
      */
-    companion object{
-        val instance:RetrofitFactory by lazy { RetrofitFactory() }
+    companion object {
+        val instance: RetrofitFactory by lazy { RetrofitFactory() }
     }
 
     private val interceptor: Interceptor
@@ -29,11 +29,11 @@ class RetrofitFactory {
     //初始化
     init {
         //通用拦截
-        interceptor = Interceptor {
-            chain -> val request = chain.request()
+        interceptor = Interceptor { chain ->
+            val request = chain.request()
                 .newBuilder()
-                .addHeader("charset","UTF-8")
-                .addHeader("token",MyMmkv.getString(Constants.token))
+                .addHeader("charset", "UTF-8")
+                .addHeader("token", MyMmkv.getString(Constants.token))
                 .build()
 
             chain.proceed(request)
@@ -41,11 +41,12 @@ class RetrofitFactory {
 
         //Retrofit实例化
         retrofit = Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(initClient())
-                .build()
+            .baseUrl(Constants.BASE_URL)
+            .baseUrl(Constants.Address_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(initClient())
+            .build()
     }
 
     /*
@@ -53,22 +54,22 @@ class RetrofitFactory {
      */
     private fun initClient(): OkHttpClient {
         return OkHttpClient.Builder()
-                .addInterceptor(LoggingInterceptor())
+            .addInterceptor(LoggingInterceptor())
 //                .addInterceptor(interceptor)
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
-                .build()
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .build()
     }
 
     /*
         日志拦截器
      */
-    class LoggingInterceptor:Interceptor{
+    class LoggingInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             var request = chain.request()
             var response = chain.proceed(request)
             var responseBody = response.peekBody(Long.MAX_VALUE)
-            Log.i("responseBody",responseBody.string())
+            Log.i("responseBody", responseBody.string())
             return response
         }
     }
@@ -76,7 +77,7 @@ class RetrofitFactory {
     /*
         具体服务实例化
      */
-    fun <T> create(service: Class<T>):T{
+    fun <T> create(service: Class<T>): T {
         return retrofit.create(service)
     }
 }

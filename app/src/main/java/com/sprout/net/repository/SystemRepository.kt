@@ -5,6 +5,7 @@ import com.shop.api.ServiceApi
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.RequestBody
 
 /**
  * 数据仓库
@@ -63,6 +64,22 @@ class SystemRepository {
     suspend fun getTheme()= withContext(Dispatchers.IO){
         serviceApi.getTheme()
     }
+
+    /**
+     * 提交动态数据
+     */
+    suspend fun submitTrends(requestBody: RequestBody) = withContext(Dispatchers.IO){
+        serviceApi.submitTrends(requestBody)
+    }
+
+    /**
+     * 获取动态列表数据
+     */
+    suspend fun trendsList(command:Int,channelid:Int,page:Int,size:Int) = withContext(Dispatchers.IO){
+        serviceApi.trendsList(command,channelid,page,size)
+    }
+
+
 
 
 
