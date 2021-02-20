@@ -42,7 +42,6 @@ class RetrofitFactory {
         //Retrofit实例化
         retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
-            .baseUrl(Constants.Address_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(initClient())

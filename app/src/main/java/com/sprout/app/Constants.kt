@@ -10,8 +10,6 @@ class Constants {
         //基础地址
         val BASE_URL:String = "http://sprout.cdwan.cn/api/"
 
-        var Address_URL:String="https://api.epmap.org/api/v1/air/"
-
 
     }
 }
